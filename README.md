@@ -12,12 +12,16 @@
 | --- | --- | --- |
 | [`Calendar.cpp`](./Calendar.cpp) | Вывод календаря месяца | Реализация |
 | [`daysPerMonth.cpp`](./daysPerMonth.cpp) | Количество дней в месяце | Реализация |
+| [`decreasingSort.cpp`](./decreasingSort.cpp) | Сортировка строк по убыванию с помощью `std::sort` | Реализация |
+| [`decreasingSortHandMade.cpp`](./decreasingSortHandMade.cpp) | Сортировка строк по убыванию без `std::sort` | Реализация |
 | [`digitalSum.cpp`](./digitalSum.cpp) | Сумма цифр числа | Реализация |
 | [`horse.cpp`](./horse.cpp) | Проверка взаимного положения клеток на шахматной доске | Реализация |
 | [`leapYear.cpp`](./leapYear.cpp) | Определение високосного года | Реализация |
+| [`minesweeper.cpp`](./minesweeper.cpp) | Построение поля для игры «Сапёр» | Реализация |
 | [`naturalLog.cpp`](./naturalLog.cpp) | Приближение значения `ln(2)` | Реализация |
+| [`palindrom.cpp`](./palindrom.cpp) | Проверка строки на палиндром без учёта пробелов | Реализация |
 | [`password.cpp`](./password.cpp) | Проверка сложности пароля | Реализация |
-| [`permutation.cpp`](./permutation.cpp) | Построение обратной перестановки | Черновик |
+| [`permutation.cpp`](./permutation.cpp) | Построение обратной перестановки | Реализация |
 | [`rightTriangle.cpp`](./rightTriangle.cpp) | Проверка прямоугольного треугольника | Реализация |
 | [`soundex.cpp`](./soundex.cpp) | Кодирование слова алгоритмом Soundex | Реализация |
 | [`typeSize.cpp`](./typeSize.cpp) | Размеры, границы и переполнение числовых типов | Эксперимент |
@@ -82,7 +86,19 @@ YES
 ├── README.md
 ├── Calendar.cpp
 ├── daysPerMonth.cpp
-├── ...
+├── decreasingSort.cpp
+├── decreasingSortHandMade.cpp
+├── digitalSum.cpp
+├── horse.cpp
+├── leapYear.cpp
+├── main.cpp
+├── minesweeper.cpp
+├── naturalLog.cpp
+├── palindrom.cpp
+├── password.cpp
+├── permutation.cpp
+├── rightTriangle.cpp
+├── soundex.cpp
 └── typeSize.cpp
 ```
 
