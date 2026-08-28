@@ -1,0 +1,45 @@
+# Каталоги сборки
+build/
+cmake-build-*/
+out/
+
+# Скомпилированные программы
+*.exe
+*.out
+
+# Объектные файлы
+*.o
+*.obj
+
+# Отладочные файлы
+*.pdb
+*.ilk
+*.idb
+*.dSYM/
+
+# Библиотеки
+*.dll
+*.lib
+*.a
+
+# Файлы CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Настройки Visual Studio и Rider
+.vs/
+.idea/
+
+# Машинно-зависимая конфигурация VS Code
+.vscode/c_cpp_properties.json
+
+# Временные файлы
+*.tmp
+*.log
+*~
+Thumbs.db
+Desktop.ini
+.DS_Store
