@@ -4,25 +4,25 @@
 
 Исходные условия: [задачи хэндбука в Яндекс Контесте](https://new.contest.yandex.ru/contests/42155/problems).
 
-Каждый файл в каталоге [`YandexHandbookCpp`](./YandexHandbookCpp) — самостоятельная программа со своей функцией `main`. Файлы нужно собирать и запускать по отдельности.
+Каждый `.cpp`-файл в корне репозитория — самостоятельная программа со своей функцией `main`. Файлы нужно собирать и запускать по отдельности.
 
 ## Содержание
 
 | Файл | Тема | Состояние |
 | --- | --- | --- |
-| [`Calendar.cpp`](./YandexHandbookCpp/Calendar.cpp) | Вывод календаря месяца | Реализация |
-| [`daysPerMonth.cpp`](./YandexHandbookCpp/daysPerMonth.cpp) | Количество дней в месяце | Реализация |
-| [`digitalSum.cpp`](./YandexHandbookCpp/digitalSum.cpp) | Сумма цифр числа | Реализация |
-| [`horse.cpp`](./YandexHandbookCpp/horse.cpp) | Проверка взаимного положения клеток на шахматной доске | Реализация |
-| [`leapYear.cpp`](./YandexHandbookCpp/leapYear.cpp) | Определение високосного года | Реализация |
-| [`naturalLog.cpp`](./YandexHandbookCpp/naturalLog.cpp) | Приближение значения `ln(2)` | Реализация |
-| [`password.cpp`](./YandexHandbookCpp/password.cpp) | Проверка сложности пароля | Реализация |
-| [`permutation.cpp`](./YandexHandbookCpp/permutation.cpp) | Построение обратной перестановки | Черновик |
-| [`rightTriangle.cpp`](./YandexHandbookCpp/rightTriangle.cpp) | Проверка прямоугольного треугольника | Реализация |
-| [`soundex.cpp`](./YandexHandbookCpp/soundex.cpp) | Кодирование слова алгоритмом Soundex | Реализация |
-| [`typeSize.cpp`](./YandexHandbookCpp/typeSize.cpp) | Размеры, границы и переполнение числовых типов | Эксперимент |
+| [`Calendar.cpp`](./Calendar.cpp) | Вывод календаря месяца | Реализация |
+| [`daysPerMonth.cpp`](./daysPerMonth.cpp) | Количество дней в месяце | Реализация |
+| [`digitalSum.cpp`](./digitalSum.cpp) | Сумма цифр числа | Реализация |
+| [`horse.cpp`](./horse.cpp) | Проверка взаимного положения клеток на шахматной доске | Реализация |
+| [`leapYear.cpp`](./leapYear.cpp) | Определение високосного года | Реализация |
+| [`naturalLog.cpp`](./naturalLog.cpp) | Приближение значения `ln(2)` | Реализация |
+| [`password.cpp`](./password.cpp) | Проверка сложности пароля | Реализация |
+| [`permutation.cpp`](./permutation.cpp) | Построение обратной перестановки | Черновик |
+| [`rightTriangle.cpp`](./rightTriangle.cpp) | Проверка прямоугольного треугольника | Реализация |
+| [`soundex.cpp`](./soundex.cpp) | Кодирование слова алгоритмом Soundex | Реализация |
+| [`typeSize.cpp`](./typeSize.cpp) | Размеры, границы и переполнение числовых типов | Эксперимент |
 
-Файл [`main.cpp`](./YandexHandbookCpp/main.cpp) оставлен как пустая заготовка для новых упражнений.
+Файл [`main.cpp`](./main.cpp) оставлен как пустая заготовка для новых упражнений.
 
 ## Требования
 
@@ -32,12 +32,6 @@
 Проект настроен для работы с GCC из MSYS2 в VS Code, но исходники не зависят от конкретной IDE.
 
 ## Сборка и запуск
-
-Перейдите в каталог с решениями:
-
-```powershell
-cd YandexHandbookCpp
-```
 
 Соберите нужную задачу. Например, для проверки високосного года:
 
@@ -69,19 +63,27 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic leapYear.cpp -o leapYear
 YES
 ```
 
-В VS Code можно открыть нужный `.cpp`-файл и запустить задачу сборки `C/C++: g++.exe build active file` сочетанием <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>.
+### Работа в VS Code
+
+Откройте нужный `.cpp`-файл и используйте одну из команд:
+
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> — собрать активный файл;
+- <kbd>Ctrl</kbd>+<kbd>F5</kbd> — собрать и запустить без отладки;
+- <kbd>F5</kbd> — собрать и запустить с отладчиком.
+
+Программа запускается во встроенном терминале VS Code, поэтому входные данные можно вводить там же. Отдельное консольное окно не открывается.
 
 ## Структура репозитория
 
 ```text
 .
+├── .vscode/          # настройки сборки и отладки
+├── .gitignore
 ├── README.md
-└── YandexHandbookCpp/
-    ├── .gitignore
-    ├── Calendar.cpp
-    ├── daysPerMonth.cpp
-    ├── ...
-    └── typeSize.cpp
+├── Calendar.cpp
+├── daysPerMonth.cpp
+├── ...
+└── typeSize.cpp
 ```
 
 Решения предназначены для обучения и могут дорабатываться по мере прохождения хэндбука.

@@ -6,11 +6,12 @@
       "label": "C/C++: g++.exe build active file",
       "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
       "args": [
+        "-std=c++17",
         "-g",
+        "-O0",
         "-Wall",
         "-Wextra",
-        "-I",
-        "C:/boost_1_92_0",
+        "-Wpedantic",
         "${file}",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
@@ -21,6 +22,13 @@
       "problemMatcher": [
         "$gcc"
       ],
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
       "group": {
         "kind": "build",
         "isDefault": true
