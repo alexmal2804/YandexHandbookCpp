@@ -16,6 +16,7 @@
 | [`decreasingSortHandMade.cpp`](./decreasingSortHandMade.cpp) | Сортирует строки по убыванию без `std::sort` |
 | [`digitalSum.cpp`](./digitalSum.cpp) | Вычисляет сумму цифр целого числа |
 | [`horse.cpp`](./horse.cpp) | Проверяет, находятся ли две клетки на одной строке, в одном столбце или на одной диагонали |
+| [`join.cpp`](./join.cpp) | Объединяет строки из вектора, вставляя между ними заданный символ-разделитель |
 | [`leapYear.cpp`](./leapYear.cpp) | Определяет, является ли год високосным |
 | [`matrixMaximum.cpp`](./matrixMaximum.cpp) | Создаёт случайную матрицу и выводит координаты её первого максимального элемента |
 | [`minesweeper.cpp`](./minesweeper.cpp) | Строит поле для игры «Сапёр» по заданным координатам мин |
@@ -24,7 +25,10 @@
 | [`password.cpp`](./password.cpp) | Проверяет длину, допустимые символы и сложность пароля |
 | [`permutation.cpp`](./permutation.cpp) | Строит обратную перестановку |
 | [`rightTriangle.cpp`](./rightTriangle.cpp) | Проверяет существование треугольника и является ли он прямоугольным |
+| [`sharedPrefix.cpp`](./sharedPrefix.cpp) | Находит наибольший общий префикс набора строк |
 | [`soundex.cpp`](./soundex.cpp) | Кодирует английское слово четырёхсимвольным кодом Soundex |
+| [`split.cpp`](./split.cpp) | Разбивает строку на части по заданному символу-разделителю |
+| [`transponMatrix.cpp`](./transponMatrix.cpp) | Заготовка функции для транспонирования целочисленной матрицы |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
 
 ## Требования
@@ -113,6 +117,7 @@ Measure-Command { .\matrixMaximum.exe }
 ├── decreasingSortHandMade.cpp
 ├── digitalSum.cpp
 ├── horse.cpp
+├── join.cpp
 ├── leapYear.cpp
 ├── main.cpp                    # заготовка для новых упражнений
 ├── matrixMaximum.cpp
@@ -122,7 +127,10 @@ Measure-Command { .\matrixMaximum.exe }
 ├── password.cpp
 ├── permutation.cpp
 ├── rightTriangle.cpp
+├── sharedPrefix.cpp
 ├── soundex.cpp
+├── split.cpp
+├── transponMatrix.cpp
 └── typeSize.cpp
 ```
 
