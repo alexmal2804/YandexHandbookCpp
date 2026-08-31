@@ -14,7 +14,18 @@
 */
 std::vector<std::string> Split(const std::string &str, char delimiter)
 {
-  
+  std::vector<std::string> resVector;
+  if (str.empty()) {
+    return [];
+  }
+  size_t posBeginWord = 0;
+  size_t posEndWord = str.find(delimiter, posBeginWord);
+  while (posEndWord < str.size()){
+    resVector.push_back(str.substr(posBeginWord, posEndWord));
+    posBeginWord = posEndWord + 1;
+    posEndWord = str.find(delimiter, posBeginWord);
+  }
+  return resVector;
 }
 int main()
 {
