@@ -8,22 +8,27 @@
   должна быть пустая строка. Если два разделителя встретились рядом, то пустая
   строка между ними тоже должна попасть в ответ. Для пустой строки надо вернуть
   вектор, содержащий одну пустую строку.
-
 Например, Split("What_is_your_name?", '_') должна вернуть вектор из строк What, is,
  your и name?.
 */
 std::vector<std::string> Split(const std::string &str, char delimiter)
 {
   std::vector<std::string> resVector;
-  if (str.empty()) {
+  if (str.empty())
+  {
     return {};
   }
   size_t posBeginWord = 0;
   size_t posEndWord = str.find(delimiter, posBeginWord);
-  while (posEndWord < str.size()){
-    resVector.push_back(str.substr(posBeginWord, posEndWord - posBeginWord));
-    posBeginWord = posEndWord;
-    posEndWord = str.find(delimiter, posEndWord);
+  resVector.push_back(str.substr(posBeginWord, posEndWord - posBeginWord));
+  while (posEndWord != str.size())
+  {
+    posBeginWord = posEndWord + 1;
+    posEndWord = str.find(delimiter, posBeginWord) == std::string::npos ? str.size() : str.find(delimiter, posBeginWord);
+    if (posEndWord - posBeginWord > 0)
+    {
+      resVector.push_back(str.substr(posBeginWord, posEndWord - posBeginWord));
+    }
   }
   return resVector;
 }
@@ -31,12 +36,10 @@ int main()
 {
   std::string inputString;
   std::vector<std::string> resVectorByStrings;
-  while (!(std::cin >> inputString))
+  std::cin >> inputString;
+  resVectorByStrings = Split(inputString, '_');
+  for (std::string resStr : resVectorByStrings)
   {
-    return 1;
-  }
-  resVectorByStrings = Split(inputString,'_');
-  for (std::string resStr : resVectorByStrings){
     std::cout << resStr << " ";
   }
   std::cout << std::endl;
