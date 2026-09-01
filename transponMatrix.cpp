@@ -10,6 +10,18 @@ A  из  m строк и n столбцов.
  */
 std::vector<std::vector<int>> Transpose(const std::vector<std::vector<int>> &matrix)
 {
+  size_t n = matrix.size();
+  size_t m = matrix[0].size();
+  std::vector<std::vector<int>> transposeMatrix(m, std::vector<int>(n));
+
+  for (size_t i = 0; i != n; ++i)
+  {
+    for (size_t j = 0; j < m; j++)
+    {
+      transposeMatrix[j][i] = matrix[i][j];
+    }
+  }
+  return transposeMatrix;
 }
 int main()
 {
@@ -27,5 +39,13 @@ int main()
     }
   }
   transposeMatrix = Transpose(matrix);
+  for (size_t i = 0; i != m; ++i)
+  {
+    for (size_t j = 0; j < n; j++)
+    {
+      std::cout << transposeMatrix[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
   return 0;
 }
