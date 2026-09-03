@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <string>
 /*
 Вам надо написать функцию Print, которая умеет печатать в поток
 std::cout элементы переданного контейнера через указанную строку-разделитель.
@@ -11,17 +10,17 @@ std::cout элементы переданного контейнера чере�
 которую надо печатать между элементами. В конце необходимо напечатать перевод
 строки \n.
 */
-template <typename T>
-void Print(const T &container, std::string delimiter)
+template <class T>
+void Print(const T& container, std::string delimiter)
 {
-  auto iter = container.begin();
-  for (auto element : container)
+  bool isFirst = true;
+  for (const auto& element : container)
   {
-    std::cout << element;
-     ++iter;
-    if(iter != container.begin() && iter != container.end()) {
+    if(!isFirst) {
       std::cout << delimiter;
     }
+    std::cout << element;
+    isFirst = false;
    
   }
   std::cout << std::endl;
