@@ -68,7 +68,10 @@
   "editor.suggestOnTriggerCharacters": true,
   "files.encoding": "utf8",
   "files.autoGuessEncoding": false,
-  "cSpell.language": "en,ru",
+  "cSpell.language": "en",
+  "cSpell.ignoreRegExpList": [
+    "/[А-Яа-яЁё]+/g"
+  ],
   "cSpell.words": [],
   "[cpp]": {
     "cSpell.enabled": false

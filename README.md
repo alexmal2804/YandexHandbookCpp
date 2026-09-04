@@ -32,6 +32,8 @@
 | [`soundex.cpp`](./soundex.cpp) | Кодирует английское слово четырёхсимвольным кодом Soundex |
 | [`split.cpp`](./split.cpp) | Разбивает строку на части по заданному символу-разделителю |
 | [`testPaper.cpp`](./testPaper.cpp) | Формирует стопку контрольных работ и находит работы на указанных позициях |
+| [`textEditor.cpp`](./textEditor.cpp) | Моделирует перемещение по строкам текста, вырезание и вставку через буфер обмена |
+| [`textEditor2.cpp`](./textEditor2.cpp) | Вторая версия решения задачи о текстовом редакторе (сейчас совпадает с `textEditor.cpp`) |
 | [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
 | [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
@@ -139,6 +141,8 @@ Measure-Command { .\matrixMaximum.exe }
 ├── soundex.cpp
 ├── split.cpp
 ├── testPaper.cpp
+├── textEditor.cpp
+├── textEditor2.cpp
 ├── trainDriver.cpp
 ├── transponMatrix.cpp
 └── typeSize.cpp
