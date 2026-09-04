@@ -65,5 +65,15 @@
     "comments": "off",
     "strings": "off"
   },
-  "editor.suggestOnTriggerCharacters": true
+  "editor.suggestOnTriggerCharacters": true,
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "cSpell.language": "en,ru",
+  "cSpell.words": [],
+  "[cpp]": {
+    "cSpell.enabled": false
+  },
+  "[c]": {
+    "cSpell.enabled": false
+  }
 }

@@ -12,6 +12,8 @@
         "-Wall",
         "-Wextra",
         "-Wpedantic",
+        "-finput-charset=UTF-8",
+        "-fexec-charset=UTF-8",
         "${file}",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
@@ -19,9 +21,7 @@
       "options": {
         "cwd": "${fileDirname}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "presentation": {
         "reveal": "always",
         "focus": false,
