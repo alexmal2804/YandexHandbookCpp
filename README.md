@@ -24,11 +24,16 @@
 | [`palindrom.cpp`](./palindrom.cpp) | Проверяет строку на палиндром без учёта регистра и пробельных символов |
 | [`password.cpp`](./password.cpp) | Проверяет длину, допустимые символы и сложность пароля |
 | [`permutation.cpp`](./permutation.cpp) | Строит обратную перестановку |
+| [`pringContainer.cpp`](./pringContainer.cpp) | Печатает элементы произвольного контейнера через заданный строковый разделитель |
+| [`print.cpp`](./print.cpp) | Определяет, является ли введённый год високосным |
 | [`rightTriangle.cpp`](./rightTriangle.cpp) | Проверяет существование треугольника и является ли он прямоугольным |
 | [`sharedPrefix.cpp`](./sharedPrefix.cpp) | Находит наибольший общий префикс набора строк |
+| [`sortPoints.cpp`](./sortPoints.cpp) | Сортирует точки по возрастанию расстояния до начала координат |
 | [`soundex.cpp`](./soundex.cpp) | Кодирует английское слово четырёхсимвольным кодом Soundex |
 | [`split.cpp`](./split.cpp) | Разбивает строку на части по заданному символу-разделителю |
-| [`transponMatrix.cpp`](./transponMatrix.cpp) | Заготовка функции для транспонирования целочисленной матрицы |
+| [`testPaper.cpp`](./testPaper.cpp) | Формирует стопку контрольных работ и находит работы на указанных позициях |
+| [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
+| [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
 
 ## Требования
@@ -102,7 +107,7 @@ Measure-Command { .\matrixMaximum.exe }
 - <kbd>Ctrl</kbd>+<kbd>F5</kbd> — собрать и запустить без отладки;
 - <kbd>F5</kbd> — собрать и запустить с отладчиком.
 
-Сборка настроена в режиме C++17 с предупреждениями `-Wall -Wextra -Wpedantic`. Программа запускается во встроенном терминале VS Code, поэтому входные данные можно вводить там же.
+Сборка настроена в режиме C++17 с предупреждениями `-Wall -Wextra -Wpedantic` и кодировкой UTF-8 для исходного кода и исполняемой программы. Программа запускается во встроенном терминале VS Code, поэтому входные данные можно вводить там же.
 
 ## Структура репозитория
 
@@ -126,10 +131,15 @@ Measure-Command { .\matrixMaximum.exe }
 ├── palindrom.cpp
 ├── password.cpp
 ├── permutation.cpp
+├── pringContainer.cpp
+├── print.cpp
 ├── rightTriangle.cpp
 ├── sharedPrefix.cpp
+├── sortPoints.cpp
 ├── soundex.cpp
 ├── split.cpp
+├── testPaper.cpp
+├── trainDriver.cpp
 ├── transponMatrix.cpp
 └── typeSize.cpp
 ```
