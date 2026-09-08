@@ -58,7 +58,7 @@ int main()
       [](const auto &p1, const auto &p2)
       { return std::tie(p2.second, p1.first) < std::tie(p1.secont, p2.first) });
     for(const auto &[ng, freg] : ngramFreq){
-      std::cout
+      std::cout << ng <<" - " << freg << "\n";
     }
       return 0;
 }
