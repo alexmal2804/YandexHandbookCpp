@@ -11,10 +11,12 @@
 | Файл | Что делает программа |
 | --- | --- |
 | [`Calendar.cpp`](./Calendar.cpp) | Печатает календарь по номеру первого дня недели и количеству дней в месяце |
+| [`count_freqs.cpp`](./count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::map` и выводит слова в лексикографическом порядке |
 | [`daysPerMonth.cpp`](./daysPerMonth.cpp) | Определяет количество дней в указанном месяце с учётом високосного года |
 | [`decreasingSort.cpp`](./decreasingSort.cpp) | Сортирует строки по убыванию с помощью `std::sort` |
 | [`decreasingSortHandMade.cpp`](./decreasingSortHandMade.cpp) | Сортирует строки по убыванию без `std::sort` |
 | [`digitalSum.cpp`](./digitalSum.cpp) | Вычисляет сумму цифр целого числа |
+| [`fileSystem.cpp`](./fileSystem.cpp) | Восстанавливает непустые директории по путям к файлам и выводит их в лексикографическом порядке |
 | [`horse.cpp`](./horse.cpp) | Проверяет, находятся ли две клетки на одной строке, в одном столбце или на одной диагонали |
 | [`join.cpp`](./join.cpp) | Объединяет строки из вектора, вставляя между ними заданный символ-разделитель |
 | [`leapYear.cpp`](./leapYear.cpp) | Определяет, является ли год високосным |
@@ -37,6 +39,8 @@
 | [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
 | [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
+| [`unird_count_freqs.cpp`](./unird_count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::unordered_map` без сортировки результата |
+| [`unordered_map_sort.cpp`](./unordered_map_sort.cpp) | Подсчитывает частоту слов и сортирует результат по убыванию частоты и возрастанию слова |
 
 ## Требования
 
@@ -85,6 +89,28 @@ g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic leapYear.cpp -o leapYear
 ./leapYear
 ```
 
+### Пример: дерево директорий
+
+Программа [`fileSystem.cpp`](./fileSystem.cpp) получает пути к файлам до конца стандартного ввода. Например:
+
+```text
+/home/guest/homework/A/main.cpp
+/home/guest/homework/B/readme.txt
+```
+
+Она выделяет все непустые директории, удаляет повторы с помощью `std::set` и печатает пути в лексикографическом порядке:
+
+```text
+/
+/home/
+/home/guest/
+/home/guest/homework/
+/home/guest/homework/A/
+/home/guest/homework/B/
+```
+
+При поиске слешей справа налево важно отдельно обрабатывать позицию `0` до вычисления `pos - 1`. Тип `std::string::size_type` беззнаковый: если вычесть единицу из нуля, получится `std::string::npos`, а `rfind` начнёт новый поиск с конца строки. Это приводит к зацикливанию вместо завершения обхода.
+
 ### Измерение времени выполнения
 
 В PowerShell время выполнения программы можно измерить с помощью `Measure-Command`:
@@ -119,10 +145,12 @@ Measure-Command { .\matrixMaximum.exe }
 ├── .gitignore
 ├── README.md
 ├── Calendar.cpp
+├── count_freqs.cpp
 ├── daysPerMonth.cpp
 ├── decreasingSort.cpp
 ├── decreasingSortHandMade.cpp
 ├── digitalSum.cpp
+├── fileSystem.cpp
 ├── horse.cpp
 ├── join.cpp
 ├── leapYear.cpp
@@ -145,7 +173,9 @@ Measure-Command { .\matrixMaximum.exe }
 ├── textEditor2.cpp
 ├── trainDriver.cpp
 ├── transponMatrix.cpp
-└── typeSize.cpp
+├── typeSize.cpp
+├── unird_count_freqs.cpp
+└── unordered_map_sort.cpp
 ```
 
 Скомпилированные программы, объектные файлы и каталоги сборки исключены из Git с помощью `.gitignore`.

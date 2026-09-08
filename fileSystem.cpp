@@ -30,24 +30,25 @@ std::vector<std::string> SplitDir(const std::string &str, char delimiter)
   {
     return {""};
   }
-  size_t posBeginWord = 0;
+  const size_t posBeginWord = 0;
   size_t posEndWord = str.rfind(delimiter);
   if (posEndWord == std::string::npos)
   {
     return {""};
   }
-  resVector.push_back(str.substr(posBeginWord, posEndWord + delimiter));
-  while (posEndWord != 0)
+  resVector.push_back(std::string(1, delimiter));
+  while (posEndWord != std::string::npos)
   {
-    posEndWord = str.rfind(delimiter, posEndWord) == std::string::npos
-                     ? 0
-                     : str.rfind(delimiter, posEndWord);
-    resVector.push_back(str.substr(posBeginWord, posEndWord) + delimiter);
+    resVector.push_back(str.substr(posBeginWord, posEndWord + 1));
+    if (posEndWord == 0) {
+      break;
+    }
+    posEndWord = str.rfind(delimiter, posEndWord - 1);
   }
   return resVector;
 }
 
-main()
+int main()
 {
   std::string path;
   std::set<std::string> directories;
@@ -62,8 +63,8 @@ main()
       directories.insert(directoriesVector[i]);
     }
   }
-  std::string slesh = std::string(1, delimiter);
-  directories.insert(slesh);
+  // std::string slesh = std::string(1, delimiter);
+  // directories.insert(slesh);
   for (std::string dir : directories)
   {
     std::cout << dir << "\n";
