@@ -23,7 +23,7 @@
 /boot/
 /docs/
 */
-std::vector<std::string> Split(const std::string &str, char delimiter)
+std::vector<std::string> SplitDir(const std::string &str, char delimiter)
 {
   std::vector<std::string> resVector;
   if (str.empty())
@@ -31,22 +31,23 @@ std::vector<std::string> Split(const std::string &str, char delimiter)
     return {""};
   }
   size_t posBeginWord = 0;
-  size_t posEndWord = str.find(delimiter, posBeginWord);
+  size_t posEndWord = str.rfind(delimiter);
   if (posEndWord == std::string::npos)
   {
-    posEndWord = str.size();
+    return {""};
   }
-  resVector.push_back(str.substr(posBeginWord, posEndWord - posBeginWord));
-  while (posEndWord != str.size())
+  resVector.push_back(str.substr(posBeginWord, posEndWord + delimiter));
+  while (posEndWord != 0)
   {
-    posBeginWord = posEndWord + 1;
-    posEndWord = str.find(delimiter, posBeginWord) == std::string::npos ? str.size() : str.find(delimiter, posBeginWord);
-    resVector.push_back(delimiter + str.substr(posBeginWord, posEndWord - posBeginWord) + delimiter);
+    posEndWord = str.rfind(delimiter, posEndWord) == std::string::npos
+                     ? 0
+                     : str.rfind(delimiter, posEndWord);
+    resVector.push_back(str.substr(posBeginWord, posEndWord) + delimiter);
   }
   return resVector;
 }
 
-int main()
+main()
 {
   std::string path;
   std::set<std::string> directories;
@@ -54,16 +55,18 @@ int main()
   size_t i = 0;
   while (std::cin >> path && i < 10000)
   {
-    std::vector<std::string> directoriesVector = Split(path, delimiter);
+    std::vector<std::string> directoriesVector = SplitDir(path, delimiter);
     size_t dirsLen = directoriesVector.size();
-    for (size_t i = 0; i < dirsLen - 1; i++){
+    for (size_t i = 0; i < dirsLen - 1; i++)
+    {
       directories.insert(directoriesVector[i]);
     }
   }
   std::string slesh = std::string(1, delimiter);
   directories.insert(slesh);
- for (std::string dir : directories){
-  std::cout << dir << "\n";
- }
+  for (std::string dir : directories)
+  {
+    std::cout << dir << "\n";
+  }
   return 0;
 }
