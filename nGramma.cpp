@@ -2,7 +2,8 @@
 #include <set>
 #include <map>
 #include <vector>
-#include <algorithm>>
+#include <algorithm>
+#include <tuple>
 /*
 Будем называть символьной n-граммой последовательность из
 n последовательно идущих символов в одном слове в тексте. Для данного числа
@@ -30,24 +31,36 @@ int main()
 {
   std::multiset<std::string> ngram;
   std::vector<std::pair<std::string, size_t>> ngramFreq;
-  size_t n, m;
-  std::cin >> n >> m;
+  size_t m, n;
+  std::cin >> m >> n;
   for (size_t i = 0; i < m; i++)
   {
     std::string word;
     std::cin >> word;
     size_t lastPos;
-    size_t len;
+    size_t len = word.size();
+    if (len < n) {
+      continue;
+    }
     len >= n ? lastPos = len - n : lastPos = 0;
-    for (size_t i = 0; i < lastPos; ++i)
+    for (size_t i = 0; i <= lastPos; ++i)
     {
       std::string ng = word.substr(i, n);
       ngram.insert(ng);
     }
   }
+
+
   for (const auto &ngm : ngram)
   {
-    if (std::find(ngramFreq.begin(), ngramFreq.end(), ngm) == ngramFreq.end())
+    auto it = std::find_if(
+        ngramFreq.begin(),
+        ngramFreq.end(),
+        [&ngm](const auto &pair)
+        {
+          return pair.first == ngm;
+        });
+    if (it == ngramFreq.end())
     {
       ngramFreq.push_back({ngm, ngram.count(ngm)});
     }
@@ -56,9 +69,10 @@ int main()
       ngramFreq.begin(),
       ngramFreq.end(),
       [](const auto &p1, const auto &p2)
-      { return std::tie(p2.second, p1.first) < std::tie(p1.secont, p2.first) });
-    for(const auto &[ng, freg] : ngramFreq){
-      std::cout << ng <<" - " << freg << "\n";
-    }
-      return 0;
+      { return std::tie(p2.second, p1.first) < std::tie(p1.second, p2.first); });
+  for (const auto &[ng, freg] : ngramFreq)
+  {
+    std::cout << ng << " - " << freg << "\n";
+  }
+  return 0;
 }
