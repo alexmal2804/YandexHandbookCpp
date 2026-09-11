@@ -6,16 +6,21 @@
 
 Каждый `.cpp`-файл в корне репозитория — отдельная консольная программа со своей функцией `main`. Файлы следует собирать и запускать по одному. [`main.cpp`](./main.cpp) оставлен как пустая заготовка для новых упражнений.
 
+Решения находятся на разных стадиях готовности: [`unique.cpp`](./unique.cpp) пока содержит незавершённый шаблон функции `Unique`. Для задач, где требуется отправить только функцию, используйте соответствующую функцию из исходника без демонстрационного `main`.
+
 ## Содержание
 
 | Файл | Что делает программа |
 | --- | --- |
 | [`Calendar.cpp`](./Calendar.cpp) | Печатает календарь по номеру первого дня недели и количеству дней в месяце |
+| [`commonLetters.cpp`](./commonLetters.cpp) | Находит общие буквы слов из строчных букв и выводит их по алфавиту без повторов; неподходящие слова пропускает |
 | [`count_freqs.cpp`](./count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::map` и выводит слова в лексикографическом порядке |
 | [`daysPerMonth.cpp`](./daysPerMonth.cpp) | Определяет количество дней в указанном месяце с учётом високосного года |
 | [`decreasingSort.cpp`](./decreasingSort.cpp) | Сортирует строки по убыванию с помощью `std::sort` |
 | [`decreasingSortHandMade.cpp`](./decreasingSortHandMade.cpp) | Сортирует строки по убыванию без `std::sort` |
 | [`digitalSum.cpp`](./digitalSum.cpp) | Вычисляет сумму цифр целого числа |
+| [`doublicateVector.cpp`](./doublicateVector.cpp) | Добавляет в конец вектора копию его элементов; демонстрация на векторе `{1, 2, 3}` |
+| [`duplicatedNumbers.cpp`](./duplicatedNumbers.cpp) | Для каждого введённого числа выводит `YES`, если оно уже встречалось, иначе `NO` |
 | [`fileSystem.cpp`](./fileSystem.cpp) | Восстанавливает непустые директории по путям к файлам и выводит их в лексикографическом порядке |
 | [`horse.cpp`](./horse.cpp) | Проверяет, находятся ли две клетки на одной строке, в одном столбце или на одной диагонали |
 | [`join.cpp`](./join.cpp) | Объединяет строки из вектора, вставляя между ними заданный символ-разделитель |
@@ -23,6 +28,7 @@
 | [`matrixMaximum.cpp`](./matrixMaximum.cpp) | Создаёт случайную матрицу и выводит координаты её первого максимального элемента |
 | [`minesweeper.cpp`](./minesweeper.cpp) | Строит поле для игры «Сапёр» по заданным координатам мин |
 | [`naturalLog.cpp`](./naturalLog.cpp) | Приближает `ln(2)` первыми `n` членами знакочередующегося гармонического ряда |
+| [`nGramma.cpp`](./nGramma.cpp) | Подсчитывает символьные n-граммы внутри слов и сортирует их по убыванию частоты, при равенстве — по алфавиту |
 | [`palindrom.cpp`](./palindrom.cpp) | Проверяет строку на палиндром без учёта регистра и пробельных символов |
 | [`password.cpp`](./password.cpp) | Проверяет длину, допустимые символы и сложность пароля |
 | [`permutation.cpp`](./permutation.cpp) | Строит обратную перестановку |
@@ -36,10 +42,11 @@
 | [`subjectIndex.cpp`](./subjectIndex.cpp) | Группирует ключевые слова по страницам, сортирует их и удаляет повторы |
 | [`testPaper.cpp`](./testPaper.cpp) | Формирует стопку контрольных работ и находит работы на указанных позициях |
 | [`textEditor.cpp`](./textEditor.cpp) | Моделирует перемещение по строкам текста, вырезание и вставку через буфер обмена |
-| [`textEditor2.cpp`](./textEditor2.cpp) | Вторая версия решения задачи о текстовом редакторе (сейчас совпадает с `textEditor.cpp`) |
+| [`textEditor2.cpp`](./textEditor2.cpp) | Моделирует редактор с выделением диапазона строк через `Shift`, вырезанием и вставкой нескольких строк |
 | [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
 | [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
+| [`unique.cpp`](./unique.cpp) | Незавершённая заготовка шаблонной функции `Unique`; `main` пуст |
 | [`unird_count_freqs.cpp`](./unird_count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::unordered_map` без сортировки результата |
 | [`unordered_map_sort.cpp`](./unordered_map_sort.cpp) | Подсчитывает частоту слов и сортирует результат по убыванию частоты и возрастанию слова |
 
@@ -53,6 +60,8 @@ C++17 необходим, в частности, для структуриров
 ## Сборка и запуск
 
 Находясь в каталоге репозитория, соберите нужный исходный файл. Например:
+
+Не передавайте компилятору сразу все `*.cpp`: каждый файл определяет собственную функцию `main`, поэтому их нельзя объединить в одну программу.
 
 ```powershell
 g++ -std=c++17 -Wall -Wextra -Wpedantic leapYear.cpp -o leapYear.exe
@@ -89,6 +98,61 @@ g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic matrixMaximum.cpp -o matrixMaximum.e
 g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic leapYear.cpp -o leapYear
 ./leapYear
 ```
+
+### Передача входных данных
+
+Формат ввода зависит от задачи: одни программы сначала читают количество элементов, другие — данные до конца ввода (EOF). Например, `count_freqs.cpp`, `duplicatedNumbers.cpp` и `fileSystem.cpp` читают до EOF. При интерактивном запуске в терминале Windows завершите ввод сочетанием <kbd>Ctrl</kbd>+<kbd>Z</kbd>, затем <kbd>Enter</kbd>; в Linux и macOS — <kbd>Ctrl</kbd>+<kbd>D</kbd> на пустой строке.
+
+В PowerShell можно передать текст напрямую:
+
+```powershell
+"2024" | .\leapYear.exe
+```
+
+Или прочитать подготовленный файл `input.txt`:
+
+```powershell
+Get-Content -Encoding UTF8 input.txt | .\leapYear.exe
+```
+
+В Bash используется перенаправление:
+
+```bash
+./leapYear < input.txt
+```
+
+### Пример: повторяющиеся числа
+
+Программа [`duplicatedNumbers.cpp`](./duplicatedNumbers.cpp) читает целые числа до EOF. Для ввода `1 2 1 3 2` результат будет таким:
+
+```text
+NO
+NO
+YES
+NO
+YES
+```
+
+### Пример: частоты n-грамм
+
+Программа [`nGramma.cpp`](./nGramma.cpp) сначала читает число слов `m` и длину n-граммы `n`, затем `m` слов:
+
+```text
+6 2
+to be or not to be
+```
+
+Результат:
+
+```text
+be - 2
+to - 2
+no - 1
+or - 1
+ot - 1
+```
+
+N-граммы не пересекают границы слов. Слова короче `n` пропускаются; регистр и пунктуация сохраняются.
 
 ### Пример: дерево директорий
 
@@ -157,6 +221,8 @@ Measure-Command { .\matrixMaximum.exe }
 
 ### Работа в VS Code
 
+Для существующих задач сборки и отладки требуется расширение Microsoft C/C++. В [`.vscode/tasks.json`](./.vscode/tasks.json) указан компилятор `C:\msys64\ucrt64\bin\g++.exe`, а в [`.vscode/launch.json`](./.vscode/launch.json) — отладчик `C:\msys64\ucrt64\bin\gdb.exe`. Если MSYS2 установлен в другом каталоге, скорректируйте поля `command` и `miDebuggerPath`. Для вызова `g++` из терминала каталог компилятора должен быть в `PATH`; иначе укажите полный путь к нему.
+
 Откройте нужный `.cpp`-файл и используйте одну из команд:
 
 - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> — собрать активный файл;
@@ -173,11 +239,14 @@ Measure-Command { .\matrixMaximum.exe }
 ├── .gitignore
 ├── README.md
 ├── Calendar.cpp
+├── commonLetters.cpp
 ├── count_freqs.cpp
 ├── daysPerMonth.cpp
 ├── decreasingSort.cpp
 ├── decreasingSortHandMade.cpp
 ├── digitalSum.cpp
+├── doublicateVector.cpp
+├── duplicatedNumbers.cpp
 ├── fileSystem.cpp
 ├── horse.cpp
 ├── join.cpp
@@ -186,6 +255,7 @@ Measure-Command { .\matrixMaximum.exe }
 ├── matrixMaximum.cpp
 ├── minesweeper.cpp
 ├── naturalLog.cpp
+├── nGramma.cpp
 ├── palindrom.cpp
 ├── password.cpp
 ├── permutation.cpp
@@ -203,6 +273,7 @@ Measure-Command { .\matrixMaximum.exe }
 ├── trainDriver.cpp
 ├── transponMatrix.cpp
 ├── typeSize.cpp
+├── unique.cpp                  # незавершённая функция Unique
 ├── unird_count_freqs.cpp
 └── unordered_map_sort.cpp
 ```
