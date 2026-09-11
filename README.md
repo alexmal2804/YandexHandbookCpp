@@ -11,10 +11,12 @@
 | Файл | Что делает программа |
 | --- | --- |
 | [`Calendar.cpp`](./Calendar.cpp) | Печатает календарь по номеру первого дня недели и количеству дней в месяце |
+| [`count_freqs.cpp`](./count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::map` и выводит слова в лексикографическом порядке |
 | [`daysPerMonth.cpp`](./daysPerMonth.cpp) | Определяет количество дней в указанном месяце с учётом високосного года |
 | [`decreasingSort.cpp`](./decreasingSort.cpp) | Сортирует строки по убыванию с помощью `std::sort` |
 | [`decreasingSortHandMade.cpp`](./decreasingSortHandMade.cpp) | Сортирует строки по убыванию без `std::sort` |
 | [`digitalSum.cpp`](./digitalSum.cpp) | Вычисляет сумму цифр целого числа |
+| [`fileSystem.cpp`](./fileSystem.cpp) | Восстанавливает непустые директории по путям к файлам и выводит их в лексикографическом порядке |
 | [`horse.cpp`](./horse.cpp) | Проверяет, находятся ли две клетки на одной строке, в одном столбце или на одной диагонали |
 | [`join.cpp`](./join.cpp) | Объединяет строки из вектора, вставляя между ними заданный символ-разделитель |
 | [`leapYear.cpp`](./leapYear.cpp) | Определяет, является ли год високосным |
@@ -31,12 +33,15 @@
 | [`sortPoints.cpp`](./sortPoints.cpp) | Сортирует точки по возрастанию расстояния до начала координат |
 | [`soundex.cpp`](./soundex.cpp) | Кодирует английское слово четырёхсимвольным кодом Soundex |
 | [`split.cpp`](./split.cpp) | Разбивает строку на части по заданному символу-разделителю |
+| [`subjectIndex.cpp`](./subjectIndex.cpp) | Группирует ключевые слова по страницам, сортирует их и удаляет повторы |
 | [`testPaper.cpp`](./testPaper.cpp) | Формирует стопку контрольных работ и находит работы на указанных позициях |
 | [`textEditor.cpp`](./textEditor.cpp) | Моделирует перемещение по строкам текста, вырезание и вставку через буфер обмена |
 | [`textEditor2.cpp`](./textEditor2.cpp) | Вторая версия решения задачи о текстовом редакторе (сейчас совпадает с `textEditor.cpp`) |
 | [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
 | [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
+| [`unird_count_freqs.cpp`](./unird_count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::unordered_map` без сортировки результата |
+| [`unordered_map_sort.cpp`](./unordered_map_sort.cpp) | Подсчитывает частоту слов и сортирует результат по убыванию частоты и возрастанию слова |
 
 ## Требования
 
@@ -85,6 +90,55 @@ g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic leapYear.cpp -o leapYear
 ./leapYear
 ```
 
+### Пример: дерево директорий
+
+Программа [`fileSystem.cpp`](./fileSystem.cpp) получает пути к файлам до конца стандартного ввода. Например:
+
+```text
+/home/guest/homework/A/main.cpp
+/home/guest/homework/B/readme.txt
+```
+
+Она выделяет все непустые директории, удаляет повторы с помощью `std::set` и печатает пути в лексикографическом порядке:
+
+```text
+/
+/home/
+/home/guest/
+/home/guest/homework/
+/home/guest/homework/A/
+/home/guest/homework/B/
+```
+
+При поиске слешей справа налево важно отдельно обрабатывать позицию `0` до вычисления `pos - 1`. Тип `std::string::size_type` беззнаковый: если вычесть единицу из нуля, получится `std::string::npos`, а `rfind` начнёт новый поиск с конца строки. Это приводит к зацикливанию вместо завершения обхода.
+
+### Пример: предметный указатель
+
+Программа [`subjectIndex.cpp`](./subjectIndex.cpp) читает количество записей, а затем пары «ключевое слово — номер страницы»:
+
+```text
+5
+derivative 10
+function 2
+function 10
+function 10
+limit 7
+```
+
+Результат содержит только страницы с ключевыми словами. Страницы выводятся по возрастанию, слова — в алфавитном порядке и без повторов:
+
+```text
+2 function
+7 limit
+10 derivative function
+```
+
+Для хранения используется `std::map<size_t, std::set<std::string>>`: `map` упорядочивает номера страниц, а `set` одновременно сортирует слова и удаляет дубликаты. Порядок чтения должен совпадать с форматом входа:
+
+```cpp
+std::cin >> word >> page;
+```
+
 ### Измерение времени выполнения
 
 В PowerShell время выполнения программы можно измерить с помощью `Measure-Command`:
@@ -119,10 +173,12 @@ Measure-Command { .\matrixMaximum.exe }
 ├── .gitignore
 ├── README.md
 ├── Calendar.cpp
+├── count_freqs.cpp
 ├── daysPerMonth.cpp
 ├── decreasingSort.cpp
 ├── decreasingSortHandMade.cpp
 ├── digitalSum.cpp
+├── fileSystem.cpp
 ├── horse.cpp
 ├── join.cpp
 ├── leapYear.cpp
@@ -140,12 +196,15 @@ Measure-Command { .\matrixMaximum.exe }
 ├── sortPoints.cpp
 ├── soundex.cpp
 ├── split.cpp
+├── subjectIndex.cpp
 ├── testPaper.cpp
 ├── textEditor.cpp
 ├── textEditor2.cpp
 ├── trainDriver.cpp
 ├── transponMatrix.cpp
-└── typeSize.cpp
+├── typeSize.cpp
+├── unird_count_freqs.cpp
+└── unordered_map_sort.cpp
 ```
 
 Скомпилированные программы, объектные файлы и каталоги сборки исключены из Git с помощью `.gitignore`.
