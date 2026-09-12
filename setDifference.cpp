@@ -15,16 +15,14 @@ int main()
   std::vector<int> v1 = {5, 5, 3, 2, 2, 5, 9, 2, 5, 3, 3, 2};
   std::vector<int> v2 = {5, 2, 3, 4, 2, 5, 7, 2, 5, 3, 2};
   std::list<int> v;
-  std::ranges::sort(v1);
-  std::ranges::sort(v2);
+  std::sort(v1.begin(), v1.end());
+  std::sort(v2.begin(), v2.end());
   auto it = SetDifference(v1.begin(), v1.end(), v2.begin(), v2.end(), v.begin());
-  for (auto element : v)
+  const char *separator = "";
+  for (const auto &element : v)
   {
-    if (i != 0)
-    {
-      std::cout << " ";
-    }
-    std::cout << element;
+    std::cout << separator << element;
+    separator = " ";
   }
   std::cout << "\n";
   return 0;
