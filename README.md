@@ -6,7 +6,9 @@
 
 Каждый `.cpp`-файл в корне репозитория — отдельная консольная программа со своей функцией `main`. Файлы следует собирать и запускать по одному. [`main.cpp`](./main.cpp) оставлен как пустая заготовка для новых упражнений.
 
-Решения находятся на разных стадиях готовности: [`unique.cpp`](./unique.cpp) пока содержит незавершённый шаблон функции `Unique`. Для задач, где требуется отправить только функцию, используйте соответствующую функцию из исходника без демонстрационного `main`.
+В репозитории есть несколько вариантов одних и тех же решений: например, n-граммы подсчитываются через `std::multiset` в [`nGramma.cpp`](./nGramma.cpp) и через `std::map` в [`nGramma1.cpp`](./nGramma1.cpp). Функция [`Unique`](./unique.cpp) повторяет основную семантику `std::unique`: удаляет только соседние повторы и возвращает новую логическую границу диапазона.
+
+Некоторые имена файлов (`doublicateVector.cpp`, `pringContainer.cpp`, `unird_count_freqs.cpp`) сохранены в исходном виде, поэтому при сборке используйте точное имя из таблицы ниже.
 
 ## Содержание
 
@@ -29,12 +31,14 @@
 | [`minesweeper.cpp`](./minesweeper.cpp) | Строит поле для игры «Сапёр» по заданным координатам мин |
 | [`naturalLog.cpp`](./naturalLog.cpp) | Приближает `ln(2)` первыми `n` членами знакочередующегося гармонического ряда |
 | [`nGramma.cpp`](./nGramma.cpp) | Подсчитывает символьные n-граммы внутри слов и сортирует их по убыванию частоты, при равенстве — по алфавиту |
+| [`nGramma1.cpp`](./nGramma1.cpp) | Решает ту же задачу о n-граммах, подсчитывая частоты напрямую с помощью `std::map` |
 | [`palindrom.cpp`](./palindrom.cpp) | Проверяет строку на палиндром без учёта регистра и пробельных символов |
 | [`password.cpp`](./password.cpp) | Проверяет длину, допустимые символы и сложность пароля |
 | [`permutation.cpp`](./permutation.cpp) | Строит обратную перестановку |
 | [`pringContainer.cpp`](./pringContainer.cpp) | Печатает элементы произвольного контейнера через заданный строковый разделитель |
 | [`print.cpp`](./print.cpp) | Определяет, является ли введённый год високосным |
 | [`rightTriangle.cpp`](./rightTriangle.cpp) | Проверяет существование треугольника и является ли он прямоугольным |
+| [`setDifference.cpp`](./setDifference.cpp) | Демонстрирует собственную реализацию `Unique` для удаления соседних повторов; несмотря на имя файла, разность множеств не вычисляет |
 | [`sharedPrefix.cpp`](./sharedPrefix.cpp) | Находит наибольший общий префикс набора строк |
 | [`sortPoints.cpp`](./sortPoints.cpp) | Сортирует точки по возрастанию расстояния до начала координат |
 | [`soundex.cpp`](./soundex.cpp) | Кодирует английское слово четырёхсимвольным кодом Soundex |
@@ -46,7 +50,7 @@
 | [`trainDriver.cpp`](./trainDriver.cpp) | Моделирует добавление и удаление вагонов с обоих концов состава |
 | [`transponMatrix.cpp`](./transponMatrix.cpp) | Транспонирует целочисленную матрицу |
 | [`typeSize.cpp`](./typeSize.cpp) | Показывает границы и размеры числовых типов, а также примеры переполнения |
-| [`unique.cpp`](./unique.cpp) | Незавершённая заготовка шаблонной функции `Unique`; `main` пуст |
+| [`unique.cpp`](./unique.cpp) | Реализует аналог `std::unique` и удаляет хвост вектора после новой логической границы |
 | [`unird_count_freqs.cpp`](./unird_count_freqs.cpp) | Подсчитывает частоту слов с помощью `std::unordered_map` без сортировки результата |
 | [`unordered_map_sort.cpp`](./unordered_map_sort.cpp) | Подсчитывает частоту слов и сортирует результат по убыванию частоты и возрастанию слова |
 
@@ -256,12 +260,14 @@ Measure-Command { .\matrixMaximum.exe }
 ├── minesweeper.cpp
 ├── naturalLog.cpp
 ├── nGramma.cpp
+├── nGramma1.cpp
 ├── palindrom.cpp
 ├── password.cpp
 ├── permutation.cpp
 ├── pringContainer.cpp
 ├── print.cpp
 ├── rightTriangle.cpp
+├── setDifference.cpp
 ├── sharedPrefix.cpp
 ├── sortPoints.cpp
 ├── soundex.cpp
@@ -273,7 +279,7 @@ Measure-Command { .\matrixMaximum.exe }
 ├── trainDriver.cpp
 ├── transponMatrix.cpp
 ├── typeSize.cpp
-├── unique.cpp                  # незавершённая функция Unique
+├── unique.cpp                  # аналог std::unique для соседних повторов
 ├── unird_count_freqs.cpp
 └── unordered_map_sort.cpp
 ```
