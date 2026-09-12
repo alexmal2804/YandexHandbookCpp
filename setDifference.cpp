@@ -1,38 +1,30 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include <algorithm>
-template <typename Iter>
-Iter Unique(Iter first, Iter last)
+template <typename InIter1, typename InIter2, typename OutIter>
+OutIter SetDifference(InIter1 first1, InIter1 last1,
+                      InIter2 first2, InIter2 last2,
+                      OutIter out)
 {
-  if (first == last)
-  {
-    return last;
-  }
-  auto reader = first;
-  ++reader;
-  while (reader != last)
-  {
-    if (!(*first == *reader))
-    {
-      ++first;
-      *first = *reader;
-    }
-    ++reader;
-  }
-  return ++first;
-}
+
+  return out;
+};
 int main()
 {
-  std::vector<int> v = {5, 5, 3, 2, 2, 5, 9, 2, 5, 3, 3, 2};
-  auto it = Unique(v.begin(), v.end());
-  v.erase(it, v.end());
-  for (size_t i = 0; i != v.size(); ++i)
+  std::vector<int> v1 = {5, 5, 3, 2, 2, 5, 9, 2, 5, 3, 3, 2};
+  std::vector<int> v2 = {5, 2, 3, 4, 2, 5, 7, 2, 5, 3, 2};
+  std::list<int> v;
+  std::ranges::sort(v1);
+  std::ranges::sort(v2);
+  auto it = SetDifference(v1.begin(), v1.end(), v2.begin(), v2.end(), v.begin());
+  for (auto element : v)
   {
     if (i != 0)
     {
       std::cout << " ";
     }
-    std::cout << v[i];
+    std::cout << element;
   }
   std::cout << "\n";
   return 0;
