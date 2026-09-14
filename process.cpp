@@ -12,22 +12,31 @@
 
 Этот код почему-то не работает. Найдите ошибку и сдайте исправленное решение.
 */
- template <typename T>
-  void Process(const std::vector<T> &data)
-  {
-    std::vector<T> filtered;
+template <typename T>
+void Process(const std::vector<T> &data)
+{
+  std::vector<T> filtered;
 
-    auto filteredLast = std::copy_if(
-        data.begin(),
-        data.end(),
-        filtered.begin(),
-        [](const T &x)
-        { return x > 0; });
+  auto filteredLast = std::copy_if(
+      data.begin(),
+      data.end(),
+      filtered.begin(),
+      [](const T &x)
+      { return x > 0; });
 
-    PrintResults(filtered.begin(), filteredLast);
+  PrintResults(filtered.begin(), filteredLast);
+}
+
+template <typename T>
+void PrintResults(T beginIt, T endIt){
+  while (beginIt !== endIt){
+    std::cout << *beginIt << "\n";
+    ++beginIt;
   }
+}
 int main()
 {
- 
+  std::vector<int> v = {12, -7, 4, 22, -17, 8};
+  Process(v);
   return 0;
 }
