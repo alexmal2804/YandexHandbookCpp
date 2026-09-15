@@ -38,7 +38,7 @@ void Process(const std::vector<T> &data)
 
 int main()
 {
-  std::vector<int> v = {12, -7, 4, 22, -17, 8};
+  std::vector<int> v = {12, -7, 4, 22, -17, 8, -3, 144};
   Process(v);
   return 0;
 }
