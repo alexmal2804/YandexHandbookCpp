@@ -33,8 +33,27 @@ int main()
   std::stack<char> bracketStack;
   std::cin >> bracketSeq;
   const std::string_view openBracket = {"({["};
-  const std::string_view openBracket = {")}]"};
+  const std::string_view closedBracket = {")}]"};
+  bool isCorrect = true;
   for(const char symbol : bracketSeq){
-    
+    if (openBracket.find(symbol) != std::string_view::npos){
+      bracketStack.push(symbol);
+    }
+    if (size_t num = closedBracket.find(symbol); num != std::string_view::npos) {
+      if (bracketStack.empty() || closedBracket[num] != bracketStack.top()){
+        isCorrect = false;
+        break;
+      } 
+    bracketStack.pop();
+    }
   }
-}
+  if (bracketStack.empty()) {
+    isCorrect = false;
+  }
+  if (isCorrect) {
+    std::cout << "YES";
+  } else {
+    std::cout << "NO";
+  }
+  std::cout << "\n";
+ }
