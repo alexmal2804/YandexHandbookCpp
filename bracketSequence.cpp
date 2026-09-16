@@ -51,7 +51,7 @@ int main()
       bracketStack.pop();
     }
   }
-  if (bracketStack.empty())
+  if (!bracketStack.empty())
   {
     isCorrect = false;
   }
