@@ -1,76 +1,35 @@
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <stack>
+/*
+Принцип:
+Встретили открывающую скобку — положили её в стек.
+Встретили закрывающую:
+если стек пуст — последовательность неправильная;
+проверили, соответствует ли она последней открывающей скобке;
+если не соответствует — последовательность неправильная;
+если соответствует — удалили открывающую скобку из стека.
+После обработки всей строки стек должен быть пуст.
+Почему проверяется именно последняя открывающая скобка? 
+Потому что пары должны быть вложены: последняя открытая пара обязана закрыться первой.
+Например, для:
+{([])}
+состояние стека меняется так:
+Символ	Стек после обработки
+{	{
+(	{(
+[	{([
+]	{(
+)	{
+}	пусто
+А для ([)] при встрече ) наверху стека находится [, 
+поэтому сразу определяется ошибка.
+*/
 int main()
 {
   std::string bracketSeq;
+  std::stack<char> bracketStack;
   std::cin >> bracketSeq;
-  if (bracketSeq[0] == '}' || bracketSeq[0] == ')' || bracketSeq[0] == ']')
-  {
-    std::cout << "NO" << "\n";
-    return 0;
-  }
-  for (size_t i = 0; i != bracketSeq.size(); ++i)
-  {
-    std::string_view bracketInterval;
-    switch (bracketSeq[i])
-    {
-    case '{':
-      bracketInterval = bracketSeq.substr(i, bracketSeq.find('}'));
-      break;
-    case '(':
-      bracketInterval = bracketSeq.substr(i, bracketSeq.find(')'));
-      break;
-    case '[':
-      bracketInterval = bracketSeq.substr(i, bracketSeq.find(']'));
-      break;
-    default:
-      std::cout << "NO" << "\n";
-      return 0;
-    }
-    if (bracketInterval.size() == 2)
-    {
-      continue;
-    }
-    for (char bracket : bracketInterval)
-    {
-      switch (bracket)
-      {
-      case '{':
-        if (bracketInterval.find('}') > 0)
-        {
-          break;
-        }
-        else
-        {
-          std::cout << "NO" << "\n";
-          return 0;
-        };
-      case '(':
-        if (bracketInterval.find(')') > 0)
-        {
-          break;
-        }
-        else
-        {
-          std::cout << "NO" << "\n";
-          return 0;
-        };
-      case '[':
-        if (bracketInterval.find(']') > 0)
-        {
-          break;
-        }
-        else
-        {
-          std::cout << "NO" << "\n";
-          return 0;
-        };
-      default:
-        break;
-      }
-    }
-  }
-  std::cout << "YES" << "\n";
-  return 0;
+  
 }
