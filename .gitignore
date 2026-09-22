@@ -46,3 +46,5 @@ Makefile
 Thumbs.db
 Desktop.ini
 .DS_Store
+# Локальная сборка для F5 в code-server
+.vscode/build/

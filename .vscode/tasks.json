@@ -2,37 +2,13 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "cppbuild",
-      "label": "C/C++: g++.exe build active file",
-      "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
-      "args": [
-        "-std=c++23",
-        "-g",
-        "-O0",
-        "-Wall",
-        "-Wextra",
-        "-Wpedantic",
-        "-finput-charset=UTF-8",
-        "-fexec-charset=UTF-8",
-        "${file}",
-        "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
+      "type": "shell",
+      "label": "C++23: build active file",
+      "command": "mkdir -p \"${workspaceFolder}/.vscode/build\" && g++ -std=c++23 -g -O0 -Wall -Wextra -Wpedantic \"${file}\" -o \"${workspaceFolder}/.vscode/build/program\"",
+      "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": ["$gcc"],
-      "presentation": {
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "clear": true,
-        "showReuseMessage": false
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "presentation": {"reveal": "always", "focus": false, "panel": "dedicated", "clear": true, "showReuseMessage": false},
+      "group": {"kind": "build", "isDefault": true}
     }
   ]
 }
