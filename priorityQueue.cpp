@@ -36,15 +36,17 @@ int main() {
       continue;
     }
     if (com == "EXTRACT") {
-      if (!pr_queue.empty()) {
-        if (firstElement) {
-          std::cout << "\n";
-          firstElement = false;
-        }
-        maxElement = pr_queue.top();
-        pr_queue.pop();
-        std::cout << maxElement << "\n";
+      if (firstElement) {
+        std::cout << "\n";
+        firstElement = false;
       }
+      if (pr_queue.empty()) {
+        std::cout << "CANNOT" << "\n";
+        continue;
+      }
+      maxElement = pr_queue.top();
+      pr_queue.pop();
+      std::cout << maxElement << "\n";
     }
   }
   return 0;
