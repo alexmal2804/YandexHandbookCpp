@@ -22,13 +22,14 @@ CANNOT
 */
 int main() {
   std::priority_queue<int> pr_queue;
-  std::string com, param;
+  std::string com;
+  int param;
   int maxElement;
-  bool firstElement = true;
+  // bool firstElement = true;
   while (std::cin >> com) {
     if (com == "ADD") {
       std::cin >> param;
-      pr_queue.push(std::stoi(param));
+      pr_queue.push(param);
       continue;
     }
     if (com == "CLEAR") {
@@ -36,10 +37,10 @@ int main() {
       continue;
     }
     if (com == "EXTRACT") {
-      if (firstElement) {
-        std::cout << "\n";
-        firstElement = false;
-      }
+      // if (firstElement) {
+      //   std::cout << "\n";
+      //   firstElement = false;
+      // }
       if (pr_queue.empty()) {
         std::cout << "CANNOT" << "\n";
         continue;
