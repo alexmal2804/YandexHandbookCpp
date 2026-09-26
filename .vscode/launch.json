@@ -2,14 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C++23: build, debug and use terminal input (LLDB)",
+      "name": "C++17: build, debug and use terminal input (LLDB)",
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/.vscode/build/program",
       "cwd": "${fileDirname}",
       "args": [],
       "terminal": "integrated",
-      "preLaunchTask": "C++23: build active file",
+      "preLaunchTask": "C++17: build active file",
       "stopOnEntry": false
     }
   ]

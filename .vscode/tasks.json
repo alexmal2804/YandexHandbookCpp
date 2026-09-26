@@ -3,8 +3,8 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "C++23: build active file",
-      "command": "mkdir -p \"${workspaceFolder}/.vscode/build\" && g++ -std=c++23 -g -O0 -Wall -Wextra -Wpedantic \"${file}\" -o \"${workspaceFolder}/.vscode/build/program\"",
+      "label": "C++17: build active file",
+      "command": "mkdir -p \"${workspaceFolder}/.vscode/build\" && g++ -std=c++17 -g -O0 -Wall -Wextra -Wpedantic \"${file}\" -o \"${workspaceFolder}/.vscode/build/program\"",
       "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": ["$gcc"],
       "presentation": {"reveal": "always", "focus": false, "panel": "dedicated", "clear": true, "showReuseMessage": false},
