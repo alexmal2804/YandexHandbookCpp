@@ -50,10 +50,10 @@ int main() {
     queue.push({count, word});
   }
   while (!queue.empty() && printed < k) {
-  const auto& [count, word] = queue.top();
-  std::cout << word << '\t' << count << '\n';
-  queue.pop();
-  ++printed;
+    const auto &[count, word] = queue.top();
+    std::cout << word << '\t' << count << '\n';
+    queue.pop();
+    ++printed;
   }
   return 0;
 }

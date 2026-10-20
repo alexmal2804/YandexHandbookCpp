@@ -8,7 +8,7 @@ int main()
   std::cin >> n;
   for (int i = 1; i <= n; i++)
   {
-    //std::cout << numi <<std::endl;
+    //std::cout << numi <<std::endl;12
     ln2 += sign / i;
     sign = -sign;
   }
