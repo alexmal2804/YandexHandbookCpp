@@ -21,13 +21,13 @@ class Date {
     }
     // if (m
     if (isCorrectDate == true) {
-      Day{d};
-      Month{m};
-      Year{y};
+      Day = d;
+      Month = m;
+      Year = y;
     } else {
-       Day{1};
-      Month{1};
-      Year{1970};
+       Day = 1;
+      Month = 1;
+      Year = 1970;
   }
 //   int GetDay()  const;
 //   int GetMonth() const;
