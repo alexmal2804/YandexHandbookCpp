@@ -23,9 +23,11 @@ private:
 public:
   Date(int, int, int);
   Date operator+(int days) const;
+  Date operator-(int days) const;
   int GetDay() const { return day; }
   int GetMonth() const { return month; }
   int GetYear() const { return year; }
+  long long DaysInDate() const;
 };
 
 Date::Date(int d, int m, int y) {
@@ -46,13 +48,13 @@ Date::Date(int d, int m, int y) {
     if (IsLeapYear(y)) {
       if (d < 1 || d > 29) {
         isCorrectDate = false;
-      } else {
-        if (d < 1 || d > 28) {
-          isCorrectDate = false;
-        }
       }
-      break;
+    } else {
+      if (d < 1 || d > 28) {
+        isCorrectDate = false;
+      }
     }
+    break;
   default:
     if (d < 1 || d > 31) {
       isCorrectDate = false;
@@ -73,21 +75,7 @@ Date::Date(int d, int m, int y) {
 }
 
 Date Date::operator+(int days) const {
-  int leap = leapYears(year - 1) - leapYears(1969);
-  int daysBetweenYears = 365 * (year - 1970) + leap;
-  // Количество дней перед началом каждого месяца
-  // в обычном году: январь — 0, февраль — 31 и т. д.
-  const int daysBeforeMonth[12] = {0,   31,  59,  90,  120, 151,
-                                   181, 212, 243, 273, 304, 334};
-
-  // Номер исходного дня относительно 1 января 1970 года.
-  // У самого 1 января номер равен 0.
-  long long totalDays = daysBetweenYears + daysBeforeMonth[month - 1] + day - 1;
-  // Если февраль високосного года уже прошёл,
-  // учитываем его дополнительный день.
-  if (IsLeapYear(year) && month > 2) {
-    ++totalDays;
-  }
+  int totalDays = this->DaysInDate();
   totalDays += days;
   // Меняем начало отсчёта:
   // вместо 1 января 1970 года используем 1 марта условного года 0.
@@ -127,8 +115,45 @@ Date Date::operator+(int days) const {
   if (newMonth <= 2) {
     ++newYear;
   }
-
-  //  return Date(newDay, newMonth, newYear);
+  return Date(newDay, newMonth, newYear);
 }
 
-int main() { return 0; }
+Date Date::operator-(int days) const { return *this + (-days); }
+
+long long Date::DaysInDate() const {
+  int leap = leapYears(year - 1) - leapYears(1969);
+  int daysBetweenYears = 365 * (year - 1970) + leap;
+  // Количество дней перед началом каждого месяца
+  // в обычном году: январь — 0, февраль — 31 и т. д.
+  const int daysBeforeMonth[12] = {0,   31,  59,  90,  120, 151,
+                                   181, 212, 243, 273, 304, 334};
+
+  // Номер исходного дня относительно 1 января 1970 года.
+  // У самого 1 января номер равен 0.
+  long long totalDays = daysBetweenYears + daysBeforeMonth[month - 1] + day - 1;
+  // Если февраль високосного года уже прошёл,
+  // учитываем его дополнительный день.
+  if (IsLeapYear(year) && month > 2) {
+    ++totalDays;
+  }
+  return totalDays;
+}
+
+int operator-(const Date &date1, const Date &date2) {
+  int d1 = date1.DaysInDate();
+  int d2 = date2.DaysInDate();
+  return d1 - d2;
+}
+
+int main() {
+  Date date{28, 4, 1972};
+
+  Date newDate = date + 10000;
+
+  std::cout << newDate.GetDay() << " " << newDate.GetMonth() << " "
+            << newDate.GetYear() << "\n";
+
+  std::cout << Date(28, 4, 1973) - date << "\n";
+
+  return 0;
+}
