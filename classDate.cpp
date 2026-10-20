@@ -33,6 +33,7 @@ class Date {
 //   int GetMonth() const;
 //   int GetYear() const;
 }
+};
 
 int main()
 {
